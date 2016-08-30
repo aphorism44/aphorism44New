@@ -1,0 +1,11 @@
+<header>
+			<h1>Aphorism 44</h1>
+			<h2>???</h2>
+</header>
+<br><br>
+<ul>
+    <li ng-repeat="u in updates">
+        <strong> {{ u.date | date : 'yyyy-MM-dd' }}</strong>: 
+        <span ng-bind-html="u.text | trustAsHtml"></span>
+    </li>
+</ul>

@@ -1,0 +1,23 @@
+<header>
+    <h1>Edit Page Updates</h1>
+</header>
+<section>
+    <span ng-repeat="u in updates | orderBy:'-u.date' track by $index">
+        <input type="checkbox">
+        <strong>{{ u.date | date: 'yyyy-MM-dd' }}</strong>: <span ng-bind-html="u.text | trustAsHtml"></span>
+    <br>
+    </span><br>
+    <h4>Enter new updates below.</h4>
+    <form name="updateForm" ng-submit="updateForm.$valid && addUpdate()">
+        <strong>{{ updateDate | date : 'yyyy-MM-dd' }} </strong>
+        <br>
+        {{ updateText }}
+        <br><br>
+        <label>Date: <input type="date" ng-model="updateDate" required></label>
+        <br><br>
+        <label>Text: <input type="textarea" ng-model="updateText" required></label>
+        <br><br>
+        <input type="submit" value="Add" name="AddUpdateButton" />
+        <input type="submit" value="Delete" name="DeleteUpdateButton" />
+    </form>
+</section>
