@@ -8,10 +8,11 @@ but this was heavily modified to incorporate directives
     "use strict";
     var pageApp = angular.module('page', ['routes', 'factories']);
      
-     pageApp.controller('UpdateCtrl', ['$scope', '$http', 'updateFactory', function($scope, $http, updateFactory) {
+     pageApp.controller('UpdateCtrl', ['$scope', 'updateFactory', function($scope, updateFactory) {
         
         $scope.updates = updateFactory.updates;
          
+         /*
         $scope.addUpdate = function() {
             var newUpdate = {date: $scope.updateDate, text: $scope.updateText};
             //auto increment the updateId
@@ -27,6 +28,7 @@ but this was heavily modified to incorporate directives
         this.deleteUpdate = function(update) {
             
         };
+        */
         
     }]);
     
@@ -37,42 +39,6 @@ but this was heavily modified to incorporate directives
             , controllerAs: 'navCtrl'
         };
     });
-    
-    pageApp.directive('updateView', function() {
-        return {
-            restrict: 'E'
-            , templateUrl: 'templates/update-view.ejs'
-            , controllerAs: 'updateCtrl'
-            , controller: 'UpdateCtrl'
-            , bindToController: true
-        };
-    });
-    
-    pageApp.directive('aboutView', function() {
-        return {
-            restrict: 'E'
-            , templateUrl: 'templates/about-view.ejs'
-            , controllerAs: 'aboutCtrl'
-        };
-    });
-    
-    pageApp.directive('linkView', function() {
-        return {
-            restrict: 'E'
-            , templateUrl: 'templates/link-view.ejs'
-            , controllerAs: 'linkCtrl'
-        };
-    });
-     
-    pageApp.directive('editUpdateView', ['updateFactory', function(updateFactory) {
-        return {
-            restrict: 'E'
-            , templateUrl: 'templates/edit-update-view.ejs'
-            , controller: 'UpdateCtrl'
-            , controllerAs: 'updateCtrl'
-            , bindToController: true
-        };
-    }]);
     
     /*general functions*/
     /*Below is needed to convert text with HTML in it; PIPE text like this:

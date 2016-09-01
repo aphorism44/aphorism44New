@@ -36,7 +36,7 @@ router.post('/updates', function(req, res, next) {
 //curl --data 'updateId=1&date=2016-09-01T23:23:50Z&text=test&isVisible=false' http://localhost:3000/updates
 //curl http://localhost:3000/updates
 //db.createUser({ user: "access1052", pwd: "melanchton25", roles: [ { role: "readWrite", db: "aphorism44blog" } ] })
-
+/*
 //preload an update object by id
 router.param('update', function(req, res, next, id) {
     var query = Update.findById(id);
@@ -53,6 +53,6 @@ router.param('update', function(req, res, next, id) {
 router.get('/updates/:updates', function(req, res) {
     res.json(req.post);
 });
-
+*/
 
 module.exports = router;

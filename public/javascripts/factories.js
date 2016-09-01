@@ -10,20 +10,22 @@ CAVEATS:
     //app name = store; dependecies in string array
     var pageApp = angular.module('factories', []);
     
-    pageApp.factory('updateFactory', ['$http', function($http) {
+    pageApp.factory('updateFactory', ['$http' , function($http) {
         var temp = { updates: [] };
         
-        temp.getAll = function() {
+        temp.getAll = function($http) {
+            console.log(0);
             return $http.get('/updates').success(function(data) {
                 angular.copy(data, temp.updates);
             });
         };
-        
-        temp.create = function(update) {
+        /*
+        temp.create = function(update, $http) {
             return $http.post('/updates', updates).success(function(data) {
                 temp.posts.push(data);
             });
         };
+        */
         
         return temp;
         

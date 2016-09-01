@@ -10,28 +10,31 @@ Careful to use "template" attribute since most controllers are inside directives
     pageApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
         $stateProvider.state('homeState', {
             url: '/home'
-            , template: '<update-view>'
-            , resolve: {
-                postPromise: ['updates', function(updates) {
-                    return updates.getAll();
-                }]
-            }
+            , templateUrl: 'templates/update-view.ejs'
+            , contoller: 'UpdateCtrl'
+            //, resolve: {
+            //    postPromise: ['updates', function(updates) {
+            //        console.log(2);
+             //       return updates.getAll();
+             //   }]
+            //}
         })
         .state('blogState', {
             url: '/blog'
-            , template: '<blog-view>'
+            , templateUrl: 'templates/blog-view.ejs'
         })
         .state('aboutState', {
             url: '/about'
-            , template: '<about-view>'
+            , templateUrl: 'templates/about-view.ejs'
         })
         .state('linkState', {
             url: '/links'
-            , template: '<link-view>'
+            , templateUrl: 'templates/link-view.ejs'
         })
         .state('editUpdateState', {
             url: '/editUpdate'
-            , template: '<edit-update-view>'
+            , templateUrl: 'templates/edit-update-view.ejs'
+            , contoller: 'UpdateCtrl'
         });
 
         $urlRouterProvider.otherwise('home');
