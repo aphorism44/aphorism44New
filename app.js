@@ -5,6 +5,15 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+//mongoose connect to NoSQL DB
+//NOTE - make sure this is called ABOVE the route files that use it
+var mongoose = require('mongoose');
+require('./models/Update');
+require('./models/Topic');
+require('./models/Entry');
+
+mongoose.connect('mongodb://access1052:melanchton25@ds153735.mlab.com:53735/aphorism44blog');
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
