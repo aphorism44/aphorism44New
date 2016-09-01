@@ -6,7 +6,7 @@ but this was heavily modified to incorporate directives
 
 (function() {
     "use strict";
-    var pageApp = angular.module('page', ['routes']);
+    var pageApp = angular.module('page', ['routes', 'factories']);
      
      pageApp.controller('UpdateCtrl', ['$scope', '$http', 'updateFactory', function($scope, $http, updateFactory) {
         
@@ -33,7 +33,7 @@ but this was heavily modified to incorporate directives
     pageApp.directive('navView', function() {
         return {
             restrict: 'E'
-            , templateUrl: 'nav-view.ejs'
+            , templateUrl: 'templates/nav-view.ejs'
             , controllerAs: 'navCtrl'
         };
     });
@@ -41,7 +41,7 @@ but this was heavily modified to incorporate directives
     pageApp.directive('updateView', function() {
         return {
             restrict: 'E'
-            , templateUrl: 'update-view.ejs'
+            , templateUrl: 'templates/update-view.ejs'
             , controllerAs: 'updateCtrl'
             , controller: 'UpdateCtrl'
             , bindToController: true
@@ -51,7 +51,7 @@ but this was heavily modified to incorporate directives
     pageApp.directive('aboutView', function() {
         return {
             restrict: 'E'
-            , templateUrl: 'about-view.ejs'
+            , templateUrl: 'templates/about-view.ejs'
             , controllerAs: 'aboutCtrl'
         };
     });
@@ -59,7 +59,7 @@ but this was heavily modified to incorporate directives
     pageApp.directive('linkView', function() {
         return {
             restrict: 'E'
-            , templateUrl: 'link-view.ejs'
+            , templateUrl: 'templates/link-view.ejs'
             , controllerAs: 'linkCtrl'
         };
     });
@@ -67,7 +67,7 @@ but this was heavily modified to incorporate directives
     pageApp.directive('editUpdateView', ['updateFactory', function(updateFactory) {
         return {
             restrict: 'E'
-            , templateUrl: 'edit-update-view.ejs'
+            , templateUrl: 'templates/edit-update-view.ejs'
             , controller: 'UpdateCtrl'
             , controllerAs: 'updateCtrl'
             , bindToController: true
