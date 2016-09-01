@@ -11,6 +11,11 @@ Careful to use "template" attribute since most controllers are inside directives
         $stateProvider.state('homeState', {
             url: '/home'
             , template: '<update-view>'
+            , resolve: {
+                postPromise: ['updates', function(updates) {
+                    return updates.getAll();
+                }]
+            }
         })
         .state('blogState', {
             url: '/blog'

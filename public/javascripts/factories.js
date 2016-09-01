@@ -12,32 +12,24 @@ CAVEATS:
     
     pageApp.factory('updateFactory', ['$http', function($http) {
         var temp = { updates: [] };
-        //$http.get('data/updates.json').success(function(data) {
-        //    temp.updates = data;
-        //});
-        //console.log(temp);
+        
+        temp.getAll = function() {
+            return $http.get('/updates').success(function(data) {
+                angular.copy(data, temp.updates);
+            });
+        };
+        
+        temp.create = function(update) {
+            return $http.post('/updates', updates).success(function(data) {
+                temp.posts.push(data);
+            });
+        };
+        
         return temp;
-        /*
-        //bug below - it's not funding api/updates
-        $http.get('/api/updates').success(function(data) {
-            updateCtrl.updates = data;
-            $scope.updates = data;
-            console.log(data);
-        })
-        .error(function(err) {
-            console.log('Error: ' + err);
-        });
-        */
         
     }]);
        
 })();
-
-// "dependencies": {
- //     "mongoose": "4.5.8"
-//      , "express": "4.14.0"
- //     , "body-parser" : "1.15.2"
-//  }
 
 /*
 node package manager commands:
