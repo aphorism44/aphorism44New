@@ -1,12 +1,14 @@
 <header>
     <h1>Edit Page Updates</h1>
 </header>
-<section>
-    <span ng-repeat="u in updates | orderBy:'-u.date' track by $index">
-        <input type="checkbox">
+<section ng-controller="UpdateCtrl">
+    <span ng-repeat="u in updates | orderBy:'-date' track by $index">
+        <input type="checkbox" ng-model="updates.selected[u._id]" >
         <strong>{{ u.date | date: 'yyyy-MM-dd' }}</strong>: <span ng-bind-html="u.text | trustAsHtml"></span>
     <br>
     </span><br>
+    <input type="submit" value="Delete Updates" name="DeleteUpdateButton" ng-click="deleteUpdate()" />
+    <br><br>
     <h4>Enter new updates below.</h4>
     <form name="updateForm" ng-submit="updateForm.$valid && addUpdate()">
         <strong>{{ updateDate | date : 'yyyy-MM-dd' }} </strong>
@@ -18,6 +20,5 @@
         <label>Text: <input type="textarea" ng-model="updateText" required></label>
         <br><br>
         <input type="submit" value="Add" name="AddUpdateButton" />
-        <input type="submit" value="Delete" name="DeleteUpdateButton" />
     </form>
-</section>
+</section

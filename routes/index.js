@@ -1,16 +1,16 @@
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose');
+var Update = mongoose.model('Update');
 
 /* GET needed pages. 
 In this app, we only need Express to grab the index page; the rest of the pages
 are fetched through the Angular framework, and must be located in the public folder. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   res.render('index', { title: 'Index' });
 });
 
 //data routes
-var mongoose = require('mongoose');
-var Update = mongoose.model('Update');
 
 //get all updates
 router.get('/updates', function(req, res, next) {
@@ -32,27 +32,21 @@ router.post('/updates', function(req, res, next) {
         res.json(update);
     });
 });
+
+//delete an update
+router.delete('/updates/:uId', function(req, res) {
+    Update.remove({
+        _id : req.params.uId
+    }, function(err, update) {
+        if (err) res.send(err);
+    });
+});
+
 //test this with:
 //curl --data 'updateId=1&date=2016-09-01T23:23:50Z&text=test&isVisible=false' http://localhost:3000/updates
 //curl http://localhost:3000/updates
 //db.createUser({ user: "access1052", pwd: "melanchton25", roles: [ { role: "readWrite", db: "aphorism44blog" } ] })
-/*
-//preload an update object by id
-router.param('update', function(req, res, next, id) {
-    var query = Update.findById(id);
 
-    query.exec(function (err, update){
-        if (err) { return next(err); }
-    if (!update) { return next(new Error('can\'t find update')); }
 
-    req.update = update;
-    return next();
-    });
-});
-//grab single update
-router.get('/updates/:updates', function(req, res) {
-    res.json(req.post);
-});
-*/
 
 module.exports = router;
