@@ -86,6 +86,5 @@ router.delete('/updates/:uId', function(req, res) {
 //test updates with curl:
 //curl --data 'updateId=1&date=2016-09-01T23:23:50Z&text=test&isVisible=false' http://localhost:3000/updates
 //curl http://localhost:3000/updates
-//db.createUser({ user: "access1052", pwd: "melanchton25", roles: [ { role: "readWrite", db: "aphorism44blog" } ] })
 
 module.exports = router;

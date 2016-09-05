@@ -12,7 +12,9 @@ var passport = require('passport');
 require('./models/Update');
 require('./models/User');
 
-mongoose.connect('mongodb://access1052:melanchton25@ds153735.mlab.com:53735/aphorism44blog');
+//https://devcenter.heroku.com/articles/config-vars
+//http://stackoverflow.com/questions/15353724/how-to-set-environment-variable-for-hosting-and-port
+mongoose.connect(process.env.MLAB_CONNEX);
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
