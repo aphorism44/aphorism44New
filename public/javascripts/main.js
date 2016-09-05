@@ -32,6 +32,10 @@ but this was heavily modified to incorporate directives
             url: '/about'
             , templateUrl: 'templates/about-view.ejs'
         })
+        .state('publishState', {
+            url: '/publish'
+            , templateUrl: 'templates/publish-view.ejs'
+        })
         .state('linkState', {
             url: '/links'
             , templateUrl: 'templates/link-view.ejs'
