@@ -1,9 +1,3 @@
-/*
-Starting-point tutorial: https://thinkster.io/mean-stack-tutorial
-CAVEATS:
-1. This tutorial didn't use directives, only controllers; added custom directive for nav bar.
-2. Tested all Angular code, sans Node server, in folder "angularRewrite;" subsequently moved files into the new folder, with some liberties due to the use of more files than tutorial.
-*/
 
 (function() {
     "use strict";
@@ -32,13 +26,41 @@ CAVEATS:
             });
         };
         return temp;
+    }])
+    .factory('auth', ['$http', '$window', function($http, $window){
+        var auth = {};
+        
+        auth.saveToken = function (token){
+            $window.localStorage['page-token'] = token;
+        };
+
+        auth.getToken = function (){
+            return $window.localStorage['page-token'];
+        };
+        
+        auth.isLoggedIn = function(){
+            var token = auth.getToken();
+
+            if(token){
+                var payload = JSON.parse($window.atob(token.split('.')[1]));
+
+                return payload.exp > Date.now() / 1000;
+            } else {
+                return false;
+            }
+        };
+        
+        auth.logIn = function(user){
+            return $http.post('/login', user).success(function(data){
+                auth.saveToken(data.token);
+            });
+        };
+        
+        auth.logOut = function(){
+            $window.localStorage.removeItem('page-token');
+        };
+        
+        return auth;
     }]);
        
 })();
-
-/*
-node package manager commands:
-1. npm install -g express-generator (4.14.4) //was using express alone earlier
-2. to create project: express --ejs aphorism44 //folderName; ejs = HTML templates, not Jade
-3. create the "model" version to move 
-*/

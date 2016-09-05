@@ -1,3 +1,5 @@
+//keep these here in case MongoDB fails (since I'm not paying for it)
+
 [
     { "date": "2016-06-08"
          , "text": "Minor change to layout of the blog page."

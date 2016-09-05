@@ -8,15 +8,16 @@ var bodyParser = require('body-parser');
 //mongoose connect to NoSQL DB
 //NOTE - make sure this is called ABOVE the route files that use it
 var mongoose = require('mongoose');
+var passport = require('passport');
 require('./models/Update');
-require('./models/Topic');
-require('./models/Entry');
+require('./models/User');
 
 mongoose.connect('mongodb://access1052:melanchton25@ds153735.mlab.com:53735/aphorism44blog');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+require('./config/passport');
 var app = express();
 
 // view engine setup
@@ -30,6 +31,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(passport.initialize());
 
 app.use('/', routes);
 app.use('/users', users);
