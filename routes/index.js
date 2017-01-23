@@ -10,32 +10,50 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'Index' });
 });
 
-//routers for user auth
-//DO NOT hook the register function to the frontend; just use curl to add users manually
-//since there should only be one
-router.post('/register', function(req, res, next){
-  if(!req.body.username || !req.body.password){
-    return res.status(400).json({message: 'Please fill out all fields'});
-  }
-
-  var user = new User();
-
-  user.username = req.body.username;
-
-  user.setPassword(req.body.password)
-
-  user.save(function (err){
-    if(err){ return next(err); }
-
-    return res.json({token: user.generateJWT()})
-  });
+//get all updates
+router.get('/api/updates', function(req, res, next) {
+    Update.find(function(err, updates) {
+        if(err) { return next(err); }
+        
+        res.json(updates);
+    });
 });
 
+//post an update
+router.post('/api/updates', function(req, res, next) {
+    var update = new Update(req.body);
+    //req.updates.push(update);
+    update.save(function(err, update) {
+        if(err) { return next(err); }
 
+        res.json(update);
+    });
+});
+
+//get a single update
+router.get('/api/updates/:uId', function(req, res, next) {
+    Update.findById(req.params.uId, function(err, update) {
+        if (err) res.send(err);
+        res.json(update);
+    });
+});
+
+//delete an update; MAKE SURE to return a "promise"
+router.delete('/api/updates/:uId', function(req, res) {
+    Update.remove({
+        _id : req.params.uId
+    }, function(err, update) {
+        if (err) res.send(err);
+        res.json("");
+    });
+});
+
+//routers for user auth; using passport to make it easier
+//only using login; no registration for my private page
 var passport = require('passport');
 var User = mongoose.model('User');
 
-router.post('/login', function(req, res, next) {
+router.post('/api/login', function(req, res, next) {
     if(!req.body.username || !req.body.password) {
         return res.status(400).json({message: 'Please fill out all fields'});
     }
@@ -52,36 +70,6 @@ router.post('/login', function(req, res, next) {
     
 var jwt = require('express-jwt');
 var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
-
-//get all updates
-router.get('/updates', function(req, res, next) {
-    Update.find(function(err, updates) {
-        if(err) { return next(err); }
-        
-        res.json(updates);
-    });
-});
-
-//post an update
-router.post('/updates', function(req, res, next) {
-    var update = new Update(req.body);
-
-    //req.updates.push(update);
-    update.save(function(err, update) {
-        if(err) { return next(err); }
-
-        res.json(update);
-    });
-});
-
-//delete an update
-router.delete('/updates/:uId', function(req, res) {
-    Update.remove({
-        _id : req.params.uId
-    }, function(err, update) {
-        if (err) res.send(err);
-    });
-});
 
 //test updates with curl:
 //curl --data 'updateId=1&date=2016-09-01T23:23:50Z&text=test&isVisible=false' http://localhost:3000/updates

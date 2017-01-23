@@ -17,6 +17,7 @@ require('./models/User');
 mongoose.connect(process.env.MLAB_CONNEX);
 
 var routes = require('./routes/index');
+//var updates = require('./routes/updates');
 var users = require('./routes/users');
 
 require('./config/passport');
@@ -37,6 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 
 app.use('/', routes);
+//app.use('/updates', updates);
 app.use('/users', users);
 
 // catch 404 and forward to error handler

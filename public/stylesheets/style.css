@@ -34,6 +34,10 @@ u {
     text-decoration: underline;
 }
 
+.inputtext {
+    width: 750px;
+}
+
 /* margin: (top)px, (right)px, (bottom)px, (left)px; */
 
 #main, #sidebar {
@@ -108,8 +112,8 @@ table {
 	border-width:1px;
 }
 
-#responseTableRow {
-	
+#programPills {
+	background-color: #f5ede1;
 }
 
 ul {

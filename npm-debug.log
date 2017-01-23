@@ -7,7 +7,7 @@
 6 silly lifecycle aphorism44@0.0.0~prestart: no script for prestart, continuing
 7 info lifecycle aphorism44@0.0.0~start: aphorism44@0.0.0
 8 verbose lifecycle aphorism44@0.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle aphorism44@0.0.0~start: PATH: /usr/share/npm/bin/node-gyp-bin:/home/djesse/javascript/aphorism44/node_modules/.bin:/usr/local/heroku/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin/bin/opt/Komodo-Edit-10/bin/komodo:/usr/bin/sbt/bin:/usr/jdk1.8.0_91/bin:/usr/local/sbt/bin:/usr/local/scala-2.11.8/bin:/usr/local/spark-1.6.1/bin:/usr/local/apache-maven-3.3.9/bin:/usr/local/hadoop-2.7.2/bin:/usr/local/hadoop-2.7.2/sbin:/usr/bin/python3.5
+9 verbose lifecycle aphorism44@0.0.0~start: PATH: /usr/share/npm/bin/node-gyp-bin:/home/djesse/javascript/aphorism44/node_modules/.bin:/usr/local/heroku/bin:/usr/local/gradle/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin/bin/opt/Komodo-Edit-10/bin/komodo:/usr/bin/sbt/bin:/usr/jdk1.8.0_91/bin:/usr/local/sbt/bin:/usr/local/scala-2.11.8/bin:/usr/local/spark-1.6.1/bin:/usr/local/apache-maven-3.3.9/bin:/usr/local/hadoop-2.7.2/bin:/usr/local/hadoop-2.7.2/sbin:/usr/bin/python3.5:/home/djesse/.composer/vendor/bin:/home/djesse/.composer/vendor/bin
 10 verbose lifecycle aphorism44@0.0.0~start: CWD: /home/djesse/javascript/aphorism44
 11 silly lifecycle aphorism44@0.0.0~start: Args: [ '-c', 'node ./bin/www' ]
 12 silly lifecycle aphorism44@0.0.0~start: Returned: code: 1  signal: null
@@ -24,7 +24,7 @@
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
 15 verbose pkgid aphorism44@0.0.0
 16 verbose cwd /home/djesse/javascript/aphorism44
-17 error Linux 4.4.0-36-generic
+17 error Linux 4.4.0-59-generic
 18 error argv "/usr/bin/nodejs" "/usr/bin/npm" "start"
 19 error node v4.2.6
 20 error npm  v3.5.2

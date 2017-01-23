@@ -3,8 +3,8 @@
 			<h2>Source Code Thoughts</h2>
 </header>
 <br><br>
-<ul ng-controller="UpdateCtrl">
-    <li ng-repeat="u in updates | orderBy:'-date' track by $index">
+<ul class="list-group">
+    <li class="list-group-item" ng-repeat="u in updates | orderBy:'-date'">
         <strong> {{ u.date | date : 'yyyy-MM-dd' }}</strong>: 
        <span ng-bind-html="u.text | trustAsHtml"></span>
     </li>

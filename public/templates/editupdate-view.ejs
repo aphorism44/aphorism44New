@@ -1,0 +1,23 @@
+<header>
+    <h1>Edit Page Updates</h1>
+</header>
+<section>
+    <span ng-repeat="u in updates | orderBy:'-date' track by $index">
+        <input type="submit" value="Delete" name="DeleteUpdateButton" ng-click="uCtrl.deleteUpdate(u)"/>
+        <strong>{{ u.date | date: 'yyyy-MM-dd' }}</strong>: <span ng-bind-html="u.text | trustAsHtml"></span>
+    <br>
+    </span><br>
+    <br><br>
+    <h4>Enter new updates below.</h4>
+    <form name="updateForm" ng-submit="updateForm.$valid && uCtrl.addUpdate(update)">
+        <strong>{{ update.date | date : 'yyyy-MM-dd' }} </strong>
+        <br>
+        {{ update.text }}
+        <br><br>
+        <label>Date: <input type="date" ng-model="update.date" required></label>
+        <br><br>
+        <label>Text: <input type="textarea" class="inputtext" ng-model="update.text" required></label>
+        <br><br>
+        <input type="submit" value="Add" name="AddUpdateButton" />
+    </form>
+</section

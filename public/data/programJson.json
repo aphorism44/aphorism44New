@@ -1,0 +1,17 @@
+[
+        { "name": "The Stranger in Town", "desc": "HTML game (RPG/puzzle)", "tabNo": 1
+         , "pLink": "http://www.newgrounds.com/portal/view/645734"
+         , "codeLink": "https://github.com/aphorism44/gladePrologue"
+         , "pGraphic": "images/game1.png"  
+         , "pText": "A combination RPG-puzzle game. Added some innovative gameplay features and a neat, simple storyline, but the game engine needed work. Enchant.js."  }
+        , { "name": "Apprentice Wars", "desc": "HTML game (RPG/puzzle)", "tabNo": 2
+         , "pLink": "http://www.newgrounds.com/portal/view/661204"
+         , "codeLink": "https://github.com/aphorism44/glade1"
+         , "pGraphic": "images/game2.png"  
+         , "pText": "The sequel to 'The Stranger in Town'. While its engine and gameplay have been greatly enhanced and improved, along with much better music and multimedia features, the underlying storyline isn't as strong. Enchant.js."  }
+        , { "name": "The Townfolk Cartel", "desc": "HTML game (idle)", "tabNo": 3
+         , "pLink": "http://www.newgrounds.com/portal/view/687176"
+         , "codeLink": "https://github.com/aphorism44/townfolkCartel"
+         , "pGraphic": "images/game3.png"
+         , "pText": "A simple (and spoof) idle game based on classic RPG tropes. Like all idle games, the hardest part was making sure the growth mathematics worked and large numbers were handled correctly. Unlike most idle games, it's possible to win this. Phaser.io."  }
+]
