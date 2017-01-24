@@ -59,7 +59,10 @@ $resources: https://www.sitepoint.com/creating-crud-app-minutes-angulars-resourc
         //since these variables and functions are used to show/hide different partials, is okay to place them into the scope
         $scope.pageTab = 1;
         $scope.isLoggedIn = AuthorizeUser.isLoggedIn;
-        $scope.logOut = AuthorizeUser.logOut;
+        $scope.logOut = function() { 
+            AuthorizeUser.logOut();
+            $scope.setPageTab(5);
+        };
         $scope.setPageTab = function(pTab) {
             $scope.pageTab = pTab;
         };

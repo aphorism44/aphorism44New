@@ -5,22 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-//mongoose connect to NoSQL DB
-//NOTE - make sure this is called ABOVE the route files that use it
 var mongoose = require('mongoose');
-var passport = require('passport');
-require('./models/Update');
-require('./models/User');
-
 //https://devcenter.heroku.com/articles/config-vars
 //http://stackoverflow.com/questions/15353724/how-to-set-environment-variable-for-hosting-and-port
 mongoose.connect(process.env.MLAB_CONNEX);
-
-var routes = require('./routes/index');
-//var updates = require('./routes/updates');
-var users = require('./routes/users');
-
-require('./config/passport');
 var app = express();
 
 // view engine setup
@@ -34,12 +22,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use(passport.initialize());
-
-app.use('/', routes);
-//app.use('/updates', updates);
-app.use('/users', users);
+//connect all the api routes by adding index.js to api root path
+var router = require('./routes/index');
+app.use('/', router);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -48,29 +33,15 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
-}
-
-// production error handler
-// no stacktraces leaked to user
+// error handler
 app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
-});
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
 
 module.exports = app;
