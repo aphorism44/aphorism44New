@@ -1,6 +1,7 @@
+
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 .ng-invalid.ng-dirty {
@@ -156,4 +157,10 @@ img {
 
 #fractalButtonHolder {
     text-align: center;
+}
+
+@media only screen and (max-device-width: 480px) {
+    body {
+      font: 38px "Lucida Grande", Helvetica, Arial, sans-serif;
+    }
 }

@@ -5,10 +5,9 @@ $resources: https://www.sitepoint.com/creating-crud-app-minutes-angulars-resourc
 
 (function() {
     "use strict";
-    
     var model = {};
     
-    var pageApp = angular.module("page", ["ngResource","factories"]);
+    var pageApp = angular.module("page", ["ngResource", "factories"]);
     
     pageApp.directive("updateView", function() {
         return {
