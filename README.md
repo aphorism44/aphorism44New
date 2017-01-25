@@ -1,7 +1,9 @@
 # aphorism44New
 
-This is my new webpage, using the MEAN stack, with an entirely RESTful design using an AngularJS state machine.
+This is my personal website, which I'm always working on. It uses a MEAN stack (MondoDB/Express/AngularJS/Node). On the frontend, I use Angular custom directives to organize all the sections, and have some very basic mobile-responsive features (keeping the text readable on smaller devices). On the backend, I use Mongoose to help with MondoDB, and the Passport library to simplify the page's user login.
 
-While my domain is still (as of September 2016) through GoDaddy, I have to host this page on Heroku and pipe it since GoDaddy doesn't support NodeJS. Likewise, my MongoDB is hosted on MLab, since GoDaddy doesn't support that either. I moved my original blog into WordPress, but only link to it here, since WordPress is made for the LAMP stack.
+The page is active here: http://www.aphorism44.com.
 
-When my GoDaddy account expires in December, I need to find a MEAN-friendly host and possibly a new domain name.
+I hold my IP address through NameCheap, and use Heroku to deploy this stack. The data is stored in the cloud at mLab (creator of MongoDB). My WordPress blog is linked to a different site (WordPress was primarily designed to work with PHP/MySQL).
+
+My previous web page was built using the LAMP stack (Linux/Apache/MySQL/PHP), and used jQuery. I had written my own blog engine using TinyMCE, but decided to move to WordPress for easier integration into social media. The old code can be found in the "aphorism44" repository on GitHub.
